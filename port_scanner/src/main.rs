@@ -13,7 +13,7 @@ fn main() {
 fn App() -> Element {
     rsx! {
         document::Link { rel: "icon", href: FAVICON }
-        document::Link { rel: "stylesheet", href: MAIN_CSS }
+        document::Stylesheet { href: MAIN_CSS }
         PortScanner {}
     }
 }
@@ -42,7 +42,7 @@ fn PortScanner() -> Element {
                 oninput: move |evt| port_range.set(evt.value().clone()) 
             }
             button { onclick: scan, "Scan Ports" }
-            pre { "{result}" }
+            h3 { "{result}" }
         }
     }
 }

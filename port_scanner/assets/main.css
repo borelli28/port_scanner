@@ -1,65 +1,12 @@
-/* App-wide styling */
 body {
-    background-color: #0f1116;
-    color: #ffffff;
+    background-color: #FFCAB1;
+    color: #69A2B0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    height: 100vh;
+    height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
-/* Container for the port scanner */
-div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    max-width: 90%;
-    gap: 2%;
-    padding: 2%;
-}
-
-/* Input fields */
-input {
-    width: 60%;
-    max-width: 80%;
-    padding: 1%;
-    margin-bottom: 2%;
-    background-color: #1f1f1f;
-    color: #ffffff;
-    border: 1px solid #ffffff;
-    border-radius: 5%;
-    font-size: 100%;
-}
-
-/* Button styling */
-button {
-    width: 30%;
-    padding: 1%;
-    background-color: #1f1f1f;
-    color: #ffffff;
-    border: 1px solid #ffffff;
-    border-radius: 5%;
-    cursor: pointer;
-    font-size: 100%;
-}
-
-button:hover {
-    background-color: #2f2f2f;
-}
-
-/* Result output */
-pre {
-    width: 80%;
-    max-width: 90%;
-    padding: 2%;
-    background-color: #1f1f1f;
-    border: 1px solid #ffffff;
-    border-radius: 5%;
-    font-size: 90%;
-    white-space: pre-wrap;
-    overflow-wrap: break-word;
+* {
+    outline: 1px dashed red;
 }

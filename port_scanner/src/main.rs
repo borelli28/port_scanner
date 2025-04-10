@@ -32,16 +32,18 @@ fn PortScanner() -> Element {
     };
 
     rsx! {
-        div {
-            input { 
-                value: "{ip}", 
-                oninput: move |evt| ip.set(evt.value().clone()) 
+        div { class: "container",
+            div { class: "input-container",
+                input { 
+                    value: "{ip}", 
+                    oninput: move |evt| ip.set(evt.value().clone()) 
+                }
+                input { 
+                    value: "{port_range}", 
+                    oninput: move |evt| port_range.set(evt.value().clone()) 
+                }
+                button { onclick: scan, "Scan Ports" }
             }
-            input { 
-                value: "{port_range}", 
-                oninput: move |evt| port_range.set(evt.value().clone()) 
-            }
-            button { onclick: scan, "Scan Ports" }
             div { class: "results-container",
                 span { class: "open", "Open: " }
                 p { class: "ports-text", "{result.read().0}" }

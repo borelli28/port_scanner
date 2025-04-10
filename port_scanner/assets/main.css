@@ -1,12 +1,26 @@
 body {
     background-color: #FFCAB1;
-    color: #69A2B0;
+    color: #A1C084;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: 100%;
+    width: 80%;
     display: flex;
     justify-content: center;
 }
 
-* {
-    outline: 1px dashed red;
+.results-container {
+    background-color: #69A2B0;
+    margin-top: 5%;
 }
+
+.open, .closed, .filtered {
+    color: #E05263;
+}
+
+.ports-text {
+    color: white;
+}
+
+/* * {
+    outline: 1px dashed red;
+} */

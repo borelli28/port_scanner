@@ -22,7 +22,7 @@ fn App() -> Element {
 fn PortScanner() -> Element {
     let mut ip = use_signal(|| String::from("127.0.0.1"));
     let mut port_range = use_signal(|| String::from("1-100"));
-    let mut result = use_signal(|| String::new());
+    let mut result = use_signal(|| (String::new(), String::new(), String::new())); // (open, closed, filtered)
 
     let scan = move |_| {
         let ip_addr: IpAddr = ip.read().parse().unwrap_or(IpAddr::V4("127.0.0.1".parse().unwrap()));
@@ -42,7 +42,14 @@ fn PortScanner() -> Element {
                 oninput: move |evt| port_range.set(evt.value().clone()) 
             }
             button { onclick: scan, "Scan Ports" }
-            h3 { "{result}" }
+            div { class: "results-container",
+                span { class: "open", "Open: " }
+                p { class: "ports-text", "{result.read().0}" }
+                span { class: "closed", "Closed: " }
+                p { class: "ports-text", "{result.read().1}" }
+                span { class: "filtered", "Filtered: " }
+                p { class: "ports-text", "{result.read().2}" }
+            }
         }
     }
 }
@@ -60,7 +67,7 @@ fn parse_port_range(range: &str) -> Result<Vec<u16>, Box<dyn std::error::Error>>
     }
 }
 
-fn scanner(ip: IpAddr, ports: &[u16]) -> String {
+fn scanner(ip: IpAddr, ports: &[u16]) -> (String, String, String) {
     let mut open = Vec::new();
     let mut closed = Vec::new();
     let mut filtered = Vec::new();
@@ -79,8 +86,7 @@ fn scanner(ip: IpAddr, ports: &[u16]) -> String {
         }
     }
 
-    format!(
-        "Open: {}\nClosed: {}\nFiltered: {}",
+    (
         open.iter().map(|p| p.to_string()).collect::<Vec<_>>().join(", "),
         closed.iter().map(|p| p.to_string()).collect::<Vec<_>>().join(", "),
         filtered.iter().map(|p| p.to_string()).collect::<Vec<_>>().join(", ")

@@ -2,6 +2,8 @@
 
 A simple port scanner GUI app built with Dioxus 0.6.0. Scans IP addresses for open, closed, and filtered ports.
 
+![Image here](./port_scanner/assets/scanner.png)
+
 ## How to Run
 
 1. Ensure you have the Dioxus CLI (`dx`) installed.

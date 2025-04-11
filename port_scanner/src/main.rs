@@ -22,7 +22,7 @@ fn App() -> Element {
 fn PortScanner() -> Element {
     let mut ip = use_signal(|| String::from("127.0.0.1"));
     let mut port_range = use_signal(|| String::from("1-100"));
-    let mut result = use_signal(|| (String::new(), String::new(), String::new())); // (open, closed, filtered)
+    let mut result = use_signal(|| (String::new(), String::new(), String::new()));
 
     let scan = move |_| {
         let ip_addr: IpAddr = ip.read().parse().unwrap_or(IpAddr::V4("127.0.0.1".parse().unwrap()));

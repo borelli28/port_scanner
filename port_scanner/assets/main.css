@@ -1,36 +1,41 @@
 body {
-    background-color: #2D2D2D; /* Dark, modern background */
-    color: #E0E0E0; /* Light text color */
+    background-color: #2D2D2D;
+    color: #E0E0E0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: 100vh;
     width: 100vw;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Start from top to allow scrolling */
     text-align: center;
     margin: 0;
+    overflow-y: auto; /* Enable vertical scrolling on body */
 }
 
 .container {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 90vw; /* Constrain for better layout */
+    flex-direction: column; /* Stack input and results vertically */
+    width: 90vw;
     max-width: 90vw;
-    background-color: #3A3A3A; /* Slightly lighter than body */
+    background-color: #3A3A3A;
     padding: 2vh 2vw;
-    border-radius: 1vh; /* Rounded corners */
-    box-shadow: 0 0.5vh 1vw rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    border-radius: 1vh;
+    box-shadow: 0 0.5vh 1vw rgba(0, 0, 0, 0.3);
+    min-height: 90vh; /* Ensure container takes most of viewport height */
 }
 
 .input-container {
-    margin: 3vh 0;
+    position: sticky; /* Fix inputs at the top */
+    top: 0;
+    z-index: 1; /* Ensure it stays above results */
+    background-color: #3A3A3A; /* Match container background */
+    margin: 0; /* Remove margin to avoid gaps */
+    padding: 2vh 0; /* Add padding for spacing */
     display: flex;
-    flex-direction: column; /* Stack inputs vertically */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 1vh; /* Space between elements */
+    gap: 1vh;
 }
 
 .input-container input {
@@ -38,18 +43,18 @@ body {
     width: 86vw;
     max-width: 90vw;
     margin: 0 4vw;
-    background-color: #4A4A4A; /* Dark input background */
+    background-color: #4A4A4A;
     color: #E0E0E0;
-    border: 1px solid #606060; /* Subtle border */
-    border-radius: 0.8vh; /* Rounded corners */
-    font-size: 1.5vw; /* Larger text */
+    border: 1px solid #606060;
+    border-radius: 0.8vh;
+    font-size: 1.5vw;
     font-weight: 400;
-    transition: border-color 0.3s, box-shadow 0.3s; /* Smooth effects */
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 .input-container input:focus {
-    border-color: #4A90E2; /* Highlight on focus */
-    box-shadow: 0 0 1vh rgba(74, 144, 226, 0.5); /* Glow effect */
+    border-color: #4A90E2;
+    box-shadow: 0 0 1vh rgba(74, 144, 226, 0.5);
     outline: none;
 }
 
@@ -73,27 +78,29 @@ body {
 }
 
 .results-container {
-    background-color: #4A4A4A; /* Match input background */
-    margin-top: 4vh;
+    background-color: #4A4A4A;
+    margin-top: 2vh;
     width: 86vw;
     max-width: 86vw;
     padding: 2vh 2vw;
     display: flex;
-    flex-direction: column; /* Stack results vertically */
-    border-radius: 1vh; /* Rounded corners */
-    box-shadow: 0 0.5vh 1vw rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    flex-direction: column;
+    border-radius: 1vh;
+    box-shadow: 0 0.5vh 1vw rgba(0, 0, 0, 0.2);
+    max-height: 60vh; /* Limit height to enable scrolling */
+    overflow-y: auto; /* Enable vertical scrolling for results */
 }
 
 .ports-text {
-    color: #D3D3D3; /* Softer white for readability */
+    color: #D3D3D3;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    font-size: 1.2vw; /* Slightly larger text */
-    margin: 1vh 0; /* Space between lines */
+    font-size: 1.2vw;
+    margin: 1vh 0;
 }
 
 .open, .closed, .filtered {
-    color: #FF6347; /* Modern coral for labels */
+    color: #FF6347;
     font-weight: bold;
     font-size: 1.5vw;
 }
